@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 bg-secondary-theme p-5 shadow-effect">
+      <h3 class="text-center text-theme-primary">{{ formStatus }} Category</h3>
+      <p class="text-center mb-5">You can {{ formStatus }} category here ..!</p>
+
+      <form
+        class="row text-center"
+        #categoryForm="ngForm"
+        (ngSubmit)="onSubmit(categoryForm)"
+      >
+        <div class="col-md-10 form-group">
+          <input
+            type="text"
+            name="category"
+            [(ngModel)]="newCategory"
+            class="form-control shadow-effect"
+            placeholder="Add a New Category"
+            required
+          />
+          <!-- Hiển thị thông báo lỗi nếu form đã được submit và trường input không hợp lệ -->
+          <div
+            class="alert alert-danger"
+            *ngIf="submitted && categoryForm['controls']['category'].invalid"
+          >
+            You need to enter Category Name
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button
+            class="btn btn-block btn-info btn-theme mb-2"
+            [disabled]="categoryForm.invalid"
+          >
+            {{ formStatus }} a New Category
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-5 mb-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card shadow-effect">
+        <div class="card-body">
+          <table class="table row-border hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Category</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categoryArray; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ category.category }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-warning"
+                    (click)="onEdit(category.category, category.id)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-sm btn-danger"
+                    (click)="onDelete(category.id)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
