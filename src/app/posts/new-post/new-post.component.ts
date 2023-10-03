@@ -1,3 +1,4 @@
+import { Category } from './../../models/category';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -33,12 +34,11 @@ export class NewPostComponent implements OnInit {
       // console.log(this.docId);
 
       await this.postService.getOneData(val['id']).then((post) => {
-        console.log(post);
+        // console.log(post);
 
         if (this.docId) {
           this.post = post;
           // console.log(this.post.category.category);
-
           this.postForm = this.fb.group({
             title: [
               this.post.title,
@@ -53,6 +53,7 @@ export class NewPostComponent implements OnInit {
             postImg: ['', [Validators.required]],
             content: [this.post.content, [Validators.required]],
           });
+          // console.log(this.post.category.category);
 
           this.imgSrc = this.post.postImgPath;
           this.formStatus = 'Edit';

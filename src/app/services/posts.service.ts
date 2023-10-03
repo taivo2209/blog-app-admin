@@ -115,7 +115,7 @@ export class PostsService {
       });
   }
 
-  markedFeatured(id: string, featuredData: any){
+  markedFeatured(id: string, featuredData: any) {
     const docItem = doc(this.firestore, 'posts', id);
     updateDoc(docItem, featuredData)
       .then(() => {
