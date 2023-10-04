@@ -61,3 +61,7 @@ input {
 .text-theme-primary {
   color: var(--primary-color);
 }
+
+.card {
+  cursor: pointer;
+}
