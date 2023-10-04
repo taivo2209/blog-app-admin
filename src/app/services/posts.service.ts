@@ -8,6 +8,7 @@ import {
   getDoc,
   updateDoc,
   deleteDoc,
+  FieldValue
 } from '@angular/fire/firestore';
 import {
   Storage,
@@ -18,6 +19,7 @@ import {
 } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import * as firebase from '@angular/fire'
 
 @Injectable({
   providedIn: 'root',
